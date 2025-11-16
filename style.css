@@ -1,0 +1,157 @@
+/* =================================================
+   ViewHub — styles.css
+   Multi-page shared stylesheet — HTML + CSS only
+   ================================================= */
+
+:root{
+  --bg: #ffffff;
+  --surface: #fff;
+  --muted: #6f7580;
+  --text: #0b0b0b;
+  --accent: #ff2f2f;
+  --card-border: #efefef;
+  --shadow: 0 8px 24px rgba(15,23,42,0.06);
+  --transition: 260ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* DARK MODE (checkbox hack) */
+#theme-toggle:checked ~ * {
+  --bg: #070708;
+  --surface: #0f1112;
+  --muted: #9aa3ad;
+  --text: #efeff1;
+  --accent: #ff6b61;
+  --card-border: rgba(255,255,255,0.06);
+  --shadow: 0 14px 44px rgba(0,0,0,0.6);
+}
+
+/* Base */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 90%, rgba(0,0,0,0.02)));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  transition: background var(--transition), color var(--transition);
+  min-height:100vh;
+}
+
+/* Utility container */
+.container{width:92%;max-width:1180px;margin:0 auto}
+
+/* Hidden checkbox for theme */
+#theme-toggle{position:fixed;left:-9999px}
+
+/* ---------- HEADER / NAVBAR ---------- */
+.header{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:18px 0;background:var(--surface);
+  border-bottom:1px solid var(--card-border);
+  box-shadow:var(--shadow);
+}
+
+/* Centered nav items (like the screenshot) */
+.nav-center{display:flex;gap:28px;margin:0 auto;align-items:center}
+.nav-center a{color:var(--text);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px;transition:color var(--transition)}
+.nav-center a:hover{color:var(--accent)}
+
+/* Theme toggle switch (simple pill) */
+.theme-switch{
+  width:44px;height:26px;border-radius:999px;background:linear-gradient(180deg,#f1f1f1,#fafafa);
+  border:1px solid var(--card-border);display:inline-flex;align-items:center;padding:3px;cursor:pointer;transition:all var(--transition)
+}
+#theme-toggle:checked + label .knob{transform:translateX(18px);background:var(--accent)}
+.theme-switch .knob{width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06);transition:transform var(--transition),background var(--transition)}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:90px 0 60px;
+  text-align:center;
+}
+.hero h1{
+  font-size:64px;line-height:1.02;margin-bottom:16px;font-weight:800;
+  letter-spacing:-0.02em;
+}
+.hero p{font-size:18px;color:var(--muted);max-width:820px;margin:0 auto}
+
+/* ---------- MAIN LAYOUT ---------- */
+.main{display:flex;gap:28px;align-items:flex-start;padding:28px 0 60px}
+.sidebar{width:220px;padding-top:8px}
+.sidebar .side-link{display:block;padding:12px;border-radius:10px;color:var(--text);text-decoration:none;margin-bottom:8px;border-left:4px solid transparent;transition:all var(--transition)}
+.sidebar .side-link:hover{background:color-mix(in srgb,var(--accent) 6%, transparent);transform:translateX(6px)}
+.sidebar .active{border-left-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%, transparent)}
+
+/* content area (video grid) */
+.content{flex:1}
+
+/* section title */
+.section-title{font-size:20px;margin-bottom:14px;font-weight:700}
+
+/* ---------- VIDEO GRID ---------- */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* video card */
+.card{
+  background:var(--surface);border-radius:12px;border:1px solid var(--card-border);
+  overflow:hidden;box-shadow:var(--shadow);transition:transform .36s var(--transition),box-shadow var(--transition);
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 20px 48px rgba(2,6,23,0.12)}
+.thumb{
+  width:100%;height:160px;background-size:cover;background-position:center;
+  border-radius:10px;margin:12px;position:relative;
+}
+.card-body{padding:0 14px 16px}
+.title{font-size:15px;font-weight:700;margin-top:6px}
+.meta{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* duration badge (red) */
+.badge{
+  position:absolute;right:10px;bottom:10px;background:var(--accent);color:#fff;padding:6px 8px;border-radius:8px;font-weight:700;font-size:12px;box-shadow:0 6px 16px rgba(0,0,0,0.12)
+}
+
+/* ---------- WATCH PAGE ---------- */
+.watch-layout{display:grid;grid-template-columns:1fr 340px;gap:22px}
+.player{background:var(--surface);border-radius:12px;border:1px solid var(--card-border);overflow:hidden;box-shadow:var(--shadow)}
+.responsive-embed{position:relative;padding-top:56.25%}
+.responsive-embed iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+
+/* watch meta */
+.watch-meta{padding:14px}
+.watch-title{font-size:20px;font-weight:700;margin-bottom:8px}
+.watch-actions{display:flex;gap:10px;margin-top:10px}
+.action-btn{padding:8px 12px;border-radius:8px;border:1px solid var(--card-border);background:var(--surface);cursor:pointer;transition:transform var(--transition)}
+.action-btn:hover{transform:translateY(-4px)}
+
+/* upnext */
+.upnext .up-item{display:flex;gap:12px;padding:10px;border-radius:8px;align-items:center}
+.upnext .up-item img{width:120px;height:68px;border-radius:6px;object-fit:cover}
+
+/* ---------- COMMENTS ---------- */
+.comments{margin-top:18px}
+.comment{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--card-border)}
+.c-avatar{width:44px;height:44px;border-radius:10px;background:#ccc;flex-shrink:0}
+.c-body .meta{font-weight:700}
+.c-body .text{color:var(--muted);margin-top:6px}
+
+/* ---------- CHANNEL / PLAYLIST ---------- */
+.channel-head{display:flex;gap:18px;align-items:center;padding:12px;background:var(--surface);border-radius:10px;border:1px solid var(--card-border);box-shadow:var(--shadow)}
+.chan-avatar{width:96px;height:96px;border-radius:12px;background:#ddd;overflow:hidden}
+.subscribe{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+
+/* ---------- SEARCH ---------- */
+.search-result{display:flex;gap:12px;padding:10px;border-radius:10px;border:1px solid var(--card-border);background:var(--surface);margin-bottom:12px}
+.search-result .thumb{width:220px;height:120px;border-radius:8px;flex-shrink:0;background-size:cover;background-position:center}
+
+/* ---------- small screens ---------- */
+@media (max-width:1000px){
+  .main{flex-direction:column;padding:18px 0 60px}
+  .sidebar{display:none}
+  .watch-layout{grid-template-columns:1fr}
+  .hero h1{font-size:44px}
+}
