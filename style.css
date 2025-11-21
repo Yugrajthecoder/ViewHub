@@ -1,26 +1,26 @@
 
-/* Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body */
+
 body {
   font-family: Arial, sans-serif;
   background: #ffffff;
   color: #111;
 }
 
-/* Container */
+
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Header */
+
 .header {
   background: #f5f5f5;
   padding: 15px 0;
@@ -45,7 +45,7 @@ body {
   color: red;
 }
 
-/* Hero Section */
+
 .hero {
   padding: 60px 0;
   text-align: center;
@@ -63,7 +63,7 @@ body {
   margin: 0 auto;
 }
 
-/* Main Layout */
+
 .main {
   display: flex;
   gap: 20px;
@@ -74,7 +74,7 @@ body {
   flex: 1;
 }
 
-/* Sidebar */
+
 .sidebar {
   width: 200px;
 }
@@ -93,14 +93,14 @@ body {
   background: #eee;
 }
 
-/* Section Title */
+
 .section-title {
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-/* Cards */
+
 .video-grid {
   display: flex;
   flex-wrap: wrap;
@@ -137,7 +137,7 @@ body {
   margin-top: 5px;
 }
 
-/* Responsive */
+
 @media (max-width: 900px) {
   .main {
     flex-direction: column;
